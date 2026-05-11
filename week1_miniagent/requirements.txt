@@ -1,0 +1,8 @@
+flask>=2.0
+openai
+anthropic
+tavily
+pyexpat
+chromadb
+sentence-transformers
+modelscope
