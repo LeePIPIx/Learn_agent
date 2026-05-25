@@ -5,6 +5,48 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "day19_multi_agent.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "week3_langgraph/day19_multi_agent.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "day18_multi_agent.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "week3_langgraph/day18_multi_agent.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "day17_plan_execute_graph.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "week3_langgraph/day17_plan_execute_graph.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "day16_react_graph.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "week3_langgraph/day16_react_graph.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "day15_first_graph.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "week3_langgraph/day15_first_graph.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "app_langgraph.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "week3_langgraph/app_langgraph.py",
+            "console": "integratedTerminal"
+        },
+        {
             "name": "knowledge_base.py",
             "type": "debugpy",
             "request": "launch",

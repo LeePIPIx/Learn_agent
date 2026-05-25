@@ -2,24 +2,18 @@
 Flask Web 服务器 — Agent 聊天界面
 使用 Flask 提供 HTTP API 和前端页面，接收用户消息并调用 agent 核心循环
 """
-# 从 flask 导入所需组件：
-# Flask        — Web 框架核心，创建应用对象
-# render_template — 渲染 Jinja2 HTML 模板并返回给浏览器
-# request      — 获取 HTTP 请求中的数据（JSON body、参数等）
-# jsonify      — 将 Python 字典转换为 JSON 格式的 HTTP 响应
+import os
+from pathlib import Path
 from flask import Flask, render_template, request, jsonify
 
-# 从同目录的 agent 模块导入核心函数 run_agent_loop
-# 该函数负责：接收用户消息 → 调用 LLM → 执行工具 → 循环直到得到最终回答
 from agent import run_agent_loop
+from knowledge_base import kb
 
-# 创建 Flask 应用实例
-# __name__ 是当前模块名，Flask 用它来定位资源文件
-# template_folder='templates' 指定 HTML 模板存放的目录路径
 app = Flask(__name__, template_folder='templates')
 
-# 会话存储：session_id -> 对话历史（不含system消息）
 sessions = {}
+
+NOTES_DIR = Path(__file__).parent / "notes"
 
 # @app.route('/') 是路由装饰器，将根路径 '/'（首页）映射到下方的 index 函数
 # 当用户用浏览器访问 http://localhost:5000/ 时触发
@@ -73,9 +67,6 @@ def chat():
         # HTTP 状态码 500 表示服务器内部错误
         return jsonify({'error': str(e)}), 500
 
-# Python 脚本的入口判断：
-# 当直接运行 python app.py 时，__name__ 的值为 '__main__'，条件成立
-# 当被其他模块 import 时（如 agent.py 中 from app import app），__name__ 为 'app'，条件不成立，不会启动服务器
 if __name__ == '__main__':
     # 启动 Flask 内置的开发服务器
     # debug=True   — 开启调试模式：代码修改后自动重启，错误页面显示详细调用栈
